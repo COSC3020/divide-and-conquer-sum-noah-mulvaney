@@ -46,4 +46,4 @@ T(n) &= 1 + 3T(\frac{n}{3}) \\
 \end{align*}
 $$
 
-My function is a element of $\Theta(n^2)$.
+My function as implemented is a element of $\Theta(n^2)$, but because the base case includes a $n<3$ which can reasonably approximated as constant, I feel my function could belong to $\Theta(n)$.
