@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/E1vcEWuv)
 # Divide and Conquer Sum
 
 In the lectures, we've covered merge sort, which uses a divide-and-conquer
@@ -25,3 +26,24 @@ and solve it as we did in the lectures. Give the final $\Theta$ complexity.
 
 Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. Add your answer to this markdown file.
+
+## My Analysis
+
+$$
+T(n) = \begin{cases}
+1 & n<3 \\
+1+3T(\frac{n}{3}) & \text{else}
+\end{cases} \qquad
+\begin{align*}
+T(n) &= 1 + 3T(\frac{n}{3}) \\
+&= 1+3(1+3T(\frac{n}{9})) = 1+3+9T(\frac{n}{9}) \\
+&= 1+3+9(1+3T(\frac{n}{27}))=1+3+0+27T(\frac{n}{27}) \\
+&\qquad\vdots \\
+&=\sum_{j=1}^{i}3^{j-1}+3^iT(\frac{n}{3^i}) \\
+&\qquad \frac{n}{3^i}<3 \to i=\log_3 \frac{n}{2} \\
+&=\sum_{j=1}^{\log_3 \frac{n}{2}}3^{j-1}+3^{\log_3 \frac{n}{2}}T(\frac{n}{3^{\log_3 \frac{n}{2}}}) =\frac{n-2}{4}+\frac{1}{2}nT(2) \\
+&=\frac{n-2}{4}+\frac{1}{2}n \in\Theta(n)
+\end{align*}
+$$
+
+My function as implemented is a element of $\Theta(n)$.
